@@ -2,7 +2,6 @@ package com.flknlabs.unittestingexample.Model
 
 
 import android.content.SharedPreferences
-import com.flknlabs.unittestingexample.Model.*
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.After
@@ -10,6 +9,7 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers.*
 import org.mockito.Mock
+import org.mockito.kotlin.mock
 import java.util.*
 import org.hamcrest.CoreMatchers.`is` as itIs
 import org.mockito.Mockito.`when` as whenHappens
@@ -40,6 +40,10 @@ class SharedPreferencesHelperTest {
 
     @Before
     fun initMocks() {
+        mMockSharedPreferences = mock()
+        mMockEditor = mock()
+        mMockBrokenEditor = mock()
+        mMockBrokenSharedPreferences = mock()
         mSharedPreferenceEntry = SharedPreferenceEntry(
             TEST_NAME, TEST_DATE_OF_BIRTH,
             TEST_EMAIL
@@ -52,7 +56,13 @@ class SharedPreferencesHelperTest {
 
     @After
     fun freeMocks() {
-        // TODO: Investigar como liberar los mocks de mockito
+//        Mockito.clearInvocations(mSharedPreferenceEntry,
+//                mMockSharedPreferencesHelper,
+//                mMockBrokenSharedPreferencesHelper,
+//                mMockSharedPreferences,
+//                mMockBrokenSharedPreferences,
+//                mMockEditor,
+//                mMockBrokenEditor)
     }
 
     @Test
